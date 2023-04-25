@@ -17,15 +17,17 @@ export default {
       goalEdit: null,
       textInput: "",
       editingGoalId: null,
+      isDone: null,
     };
   },
   props: ["editingGoal"],
   watch: {
     editingGoal(newVal) {
       if (newVal) {
-        this.goalEdit = newVal
+        this.goalEdit = newVal;
         this.textInput = this.goalEdit.title;
         this.editingGoalId = this.goalEdit.id;
+        this.isDone = this.goalEdit.isDone;
       } else {
         this.textInput = "";
         this.editingGoalId = null;
@@ -39,6 +41,7 @@ export default {
         this.$emit("edit-goal", {
           id: this.editingGoalId,
           title: this.textInput,
+          isDone: this.isDone,
         });
       } else {
         this.$emit("submit-text", this.textInput);

@@ -1,8 +1,8 @@
 <template>
   <li class="task">
     <label :for="id">
-      <input type="checkbox" :ref="id" />
-      <p class="">{{ title }}</p>
+      <input type="checkbox" :ref="id" v-model="isChecked" />
+      <p :class="{ checked: isChecked }">{{ title }}</p>
     </label>
     <div class="settings">
       <i class="uil uil-ellipsis-h" @click="showMenu"></i>
@@ -16,6 +16,16 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isChecked: false,
+    };
+  },
+  watch: {
+    isChecked(val) {
+      this.$emit("check-goal", { id: this.id, isDone: val });
+    },
+  },
   props: {
     id: {
       type: String,
@@ -23,6 +33,10 @@ export default {
     },
     title: {
       type: String,
+      required: true,
+    },
+    isDone: {
+      type: Boolean,
       required: true,
     },
   },
@@ -39,5 +53,8 @@ export default {
       e.target.parentElement.classList.remove("show");
     },
   },
+  created() {
+    this.isChecked = this.isDone;
+  }
 };
 </script>

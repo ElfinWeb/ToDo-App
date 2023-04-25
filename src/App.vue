@@ -19,17 +19,16 @@
         Clear All
       </button>
     </div>
-    <ul class="task-box" v-if="goals">
-      <base-list
-        v-for="goal in selectedGoals"
-        :key="goal.id"
-        :title="goal.title"
-        :id="goal.id"
-        :isDone="goal.isDone"
-        @edit-goal="editGoal"
-        @delete-goal="deleteGoal"
-        @check-goal="checkGoal"
-      ></base-list>
+    <ul class="task-box" v-if="goals"><base-list
+          v-for="goal in selectedGoals"
+          :key="goal.id"
+          :title="goal.title"
+          :id="goal.id"
+          :isDone="goal.isDone"
+          @edit-goal="editGoal"
+          @delete-goal="deleteGoal"
+          @check-goal="checkGoal"
+        ></base-list>
     </ul>
   </base-card>
 </template>
@@ -116,53 +115,12 @@ body {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: linear-gradient(135deg, #4ab1ff, #2d5cfe);
+  background: linear-gradient(135deg, #d4145a, #fbb03b);
 }
 
 ::selection {
   color: #fff;
   background: #3c87ff;
-}
-
-.wrapper {
-  max-width: 405px;
-  padding: 28px 0 30px;
-  margin: 137px auto;
-  background: #fff;
-  border-radius: 7px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.task-input {
-  height: 52px;
-  padding: 0 25px;
-  position: relative;
-}
-
-.task-input img {
-  top: 50%;
-  position: absolute;
-  transform: translate(17px, -50%);
-}
-
-.task-input input {
-  height: 100%;
-  width: 100%;
-  outline: none;
-  font-size: 18px;
-  border-radius: 5px;
-  padding: 0 20px 0 53px;
-  border: 1px solid #999;
-}
-
-.task-input input:focus,
-.task-input input.active {
-  padding-left: 52px;
-  border: 2px solid #3c87ff;
-}
-
-.task-input input::placeholder {
-  color: #bfbfbf;
 }
 
 .controls,
@@ -204,7 +162,7 @@ li {
   letter-spacing: 0.3px;
   pointer-events: none;
   transition: transform 0.25s ease;
-  background: linear-gradient(135deg, #1798fb 0%, #2d5cfe 100%);
+  background: linear-gradient(135deg, #fbb03b 0%, #d4145a 100%);
 }
 
 .clear-btn.active {
@@ -260,42 +218,8 @@ li {
   display: flex;
   align-items: flex-start;
 }
-
-.task label input {
-  margin-top: 7px;
-  accent-color: #3c87ff;
-}
-
-.task label p {
-  user-select: none;
-  margin-left: 12px;
-  word-wrap: break-word;
-}
-
-.task label p.checked {
-  text-decoration: line-through;
-}
-
 .task-box .settings {
   position: relative;
-}
-
-.settings :where(i, li) {
-  cursor: pointer;
-}
-
-.settings .task-menu {
-  z-index: 10;
-  right: -5px;
-  bottom: -65px;
-  padding: 5px 0;
-  background: #fff;
-  position: absolute;
-  border-radius: 4px;
-  transform: scale(0);
-  transform-origin: top right;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease;
 }
 
 .task-box .task:last-child .task-menu {
@@ -306,31 +230,6 @@ li {
 .task-box .task:first-child .task-menu {
   bottom: -65px;
   transform-origin: top right;
-}
-
-.task-menu.show {
-  transform: scale(1);
-}
-
-.task-menu li {
-  height: 25px;
-  font-size: 16px;
-  margin-bottom: 2px;
-  padding: 17px 15px;
-  cursor: pointer;
-  justify-content: flex-start;
-}
-
-.task-menu li:last-child {
-  margin-bottom: 0;
-}
-
-.settings li:hover {
-  background: #f5f5f5;
-}
-
-.settings li i {
-  padding-right: 8px;
 }
 
 @media (max-width: 400px) {
